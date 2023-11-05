@@ -28,9 +28,13 @@ const formSchema = z.object({
 
 export function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
+    //@ts-ignore
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: ''
+      name: '',
+      description: '',
+      location: '',
+      status: ''
     }
   });
 

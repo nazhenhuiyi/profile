@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en">
       <body className=" loading">
         <SupabaseProvider>
-          {/* @ts-expect-error */}
+          {/* @ts-ignore */}
           <Navbar />
           <main
             id="skip"
