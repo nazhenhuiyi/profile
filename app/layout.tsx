@@ -2,7 +2,7 @@ import SupabaseProvider from './supabase-provider';
 import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
-import 'styles/main.css';
+import './globals.css';
 
 const meta = {
   title: 'Next.js Subscription Starter',
@@ -46,7 +46,7 @@ export default function RootLayout({
 }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className="bg-black loading">
+      <body className=" loading">
         <SupabaseProvider>
           {/* @ts-expect-error */}
           <Navbar />

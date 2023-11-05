@@ -6,7 +6,7 @@ import type { Database } from 'types_db';
 
 type Product = Database['public']['Tables']['products']['Row'];
 type Price = Database['public']['Tables']['prices']['Row'];
-
+// type Page = Database['public']['Tables']['page']
 // Note: supabaseAdmin uses the SERVICE_ROLE_KEY which you must only use in a secure server-side context
 // as it has admin privileges and overwrites RLS policies!
 const supabaseAdmin = createClient<Database>(
@@ -176,10 +176,21 @@ const manageSubscriptionStatusChange = async (
       subscription.default_payment_method as Stripe.PaymentMethod
     );
 };
+const upsertUserPage = async (userId: string, page: any) => {
+  const priceData = {
+    id: userId,
+    ...page
+  };
+
+  const { error } = await supabaseAdmin.from('pages').upsert([priceData]);
+  if (error) throw error;
+  console.log(`Price inserted/updated: ${userId}`);
+};
 
 export {
   upsertProductRecord,
   upsertPriceRecord,
   createOrRetrieveCustomer,
-  manageSubscriptionStatusChange
+  manageSubscriptionStatusChange,
+  upsertUserPage
 };
