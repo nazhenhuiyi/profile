@@ -10,11 +10,16 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
+import useSWR from 'swr';
+import { Database } from '@/types_db';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-
+import { useSupabase } from '../supabase-provider';
+import Avatar from './avatar';
+import { useEffect } from 'react';
+type Page = Database['public']['Tables']['pages']['Row'];
 const formSchema = z.object({
   name: z.string().min(2, {
     message: 'Username must be at least 2 characters.'
@@ -23,19 +28,16 @@ const formSchema = z.object({
     message: 'description must be at least 2 characters.'
   }),
   location: z.string(),
-  status: z.string()
+  status: z.string(),
+  avatar_url: z.string()
 });
 
-export function ProfileForm() {
+export function ProfileForm({ page }: { page: Page }) {
+  console.log(page);
   const form = useForm<z.infer<typeof formSchema>>({
     //@ts-ignore
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      description: '',
-      location: '',
-      status: ''
-    }
+    defaultValues: page as any
   });
 
   // 2. Define a submit handler.
@@ -69,6 +71,23 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="avatar_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Avatar size={48} {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="description"

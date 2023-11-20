@@ -81,8 +81,8 @@ gcp_jwt_path = "supabase/gcloud.json"
 gcp_project_id = ""
 gcp_project_number = ""
 
-[auth.external.github]
-client_id = "env(SUPABASE_AUTH_GITHUB_CLIENT_ID)"
-enabled = true
-redirect_uri = "http://localhost:54321/auth/v1/callback"
-secret = "env(SUPABASE_AUTH_GITHUB_SECRET)"
+# [auth.external.github]
+# client_id = "env(SUPABASE_AUTH_GITHUB_CLIENT_ID)"
+# enabled = true
+# redirect_uri = "http://localhost:54321/auth/v1/callback"
+# secret = "env(SUPABASE_AUTH_GITHUB_SECRET)"
