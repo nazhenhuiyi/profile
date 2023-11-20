@@ -6,7 +6,7 @@ const nextConfig = {
     serverActions: true
   },
   images: {
-    domains: ['localhost']
+    domains: ['localhost', '*.supabase.co']
   }
 };
 
