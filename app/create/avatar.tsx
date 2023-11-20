@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Database } from '@/types_db';
-import Image from 'next/image';
 import { useSupabase } from '../supabase-provider';
 type Profiles = Database['public']['Tables']['pages']['Row'];
 
@@ -71,7 +70,7 @@ export default function Avatar({
   return (
     <div>
       {avatarUrl ? (
-        <Image
+        <img
           width={size}
           height={size}
           src={avatarUrl}
