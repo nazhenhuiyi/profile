@@ -56,7 +56,6 @@ export default function RootLayout({
           >
             {children}
           </main>
-          <Footer />
         </SupabaseProvider>
       </body>
     </html>

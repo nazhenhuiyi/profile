@@ -68,31 +68,33 @@ export default function Avatar({
   };
 
   return (
-    <div>
+    <div className="relative">
       {avatarUrl ? (
-        <img
-          width={size}
-          height={size}
-          src={avatarUrl}
-          alt="Avatar"
-          className="avatar image"
-          style={{ height: size, width: size }}
-        />
-      ) : (
         <div
-          className="avatar no-image"
-          style={{ height: size, width: size }}
+          style={{
+            width: size,
+            height: size,
+            backgroundImage: `url('${avatarUrl}')`,
+            backgroundSize: 'cover'
+          }}
+          className="rounded aspect-square block"
         />
-      )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? 'Uploading ...' : 'upload '}
+      ) : null}
+
+      <div style={{ width: size }} className="absolute w-full h-full top-0">
+        <label className="w-full h-full absolute " htmlFor="single">
+          {avatarUrl ? (
+            <span className="bg-black text-white">重新上传</span>
+          ) : (
+            'upload '
+          )}
         </label>
         <input
           style={{
             visibility: 'hidden',
             position: 'absolute'
           }}
+          className="w-full h-full"
           type="file"
           id="single"
           accept="image/*"
