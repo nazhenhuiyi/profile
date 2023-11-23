@@ -147,7 +147,19 @@ export function ProfileForm({ page }: { page: Page }) {
             />
           </CardContent>
         </Card>
-
+        <Card>
+          <CardHeader>
+            <CardTitle>社交媒体</CardTitle>
+            <CardDescription>这里可以填写你的社交媒体信息</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="">
+              {['twitter', 'github', 'youtube'].map((v) => (
+                <span></span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
         <Button type="submit">Submit</Button>
       </form>
     </Form>
